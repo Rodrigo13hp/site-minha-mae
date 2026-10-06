@@ -1,0 +1,254 @@
+:root {
+  --fundo: #fbfbf8;
+  --fundo-lilas: #f3ecf6;
+  --lilas: #b48bc4;
+  --lilas-escuro: #7d5a8c;
+  --oliva: #5d7a3a;
+  --oliva-escuro: #3f5527;
+  --texto: #34402a;
+  --zap: #1f8a4c;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "Jost", "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--texto);
+  background: var(--fundo);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--lilas); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- topo ---------- */
+.topo {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px clamp(20px, 5vw, 64px);
+  background: rgba(251, 251, 248, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(93, 122, 58, .15);
+}
+.marca {
+  font-family: var(--serif); font-size: 2rem; font-weight: 500;
+  color: var(--oliva); text-decoration: none; letter-spacing: .02em;
+}
+.menu { display: flex; align-items: center; gap: 30px; }
+.menu a { text-decoration: none; font-weight: 400; font-size: .98rem; color: var(--oliva-escuro); }
+.menu a:not(.menu-zap):hover { color: var(--lilas-escuro); }
+.menu-zap {
+  background: var(--oliva); color: #fff !important;
+  padding: 8px 22px; border-radius: 999px;
+  transition: background .2s;
+}
+.menu-zap:hover { background: var(--oliva-escuro); }
+
+.menu-btn { display: none; background: none; border: 0; width: 44px; height: 44px; cursor: pointer; position: relative; }
+.menu-btn span {
+  position: absolute; left: 10px; right: 10px; height: 2px; background: var(--oliva);
+  transition: transform .25s, top .25s;
+}
+.menu-btn span:first-child { top: 17px; }
+.menu-btn span:last-child { top: 26px; }
+.menu-btn[aria-expanded="true"] span:first-child { top: 21px; transform: rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:last-child { top: 21px; transform: rotate(-45deg); }
+
+/* ---------- hero ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.05fr 1fr; align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  max-width: 1180px; margin: 0 auto;
+  padding: clamp(40px, 7vw, 96px) clamp(20px, 5vw, 64px) clamp(24px, 4vw, 48px);
+}
+.slogan {
+  font-family: var(--serif); font-style: italic; font-size: 1.35rem;
+  color: var(--lilas-escuro); margin-bottom: 14px;
+}
+h1 {
+  font-family: var(--serif); font-weight: 500; color: var(--oliva);
+  font-size: clamp(2.5rem, 5.6vw, 4.4rem); line-height: 1.05; letter-spacing: -.01em;
+  margin-bottom: 22px; text-wrap: balance;
+}
+.lead { font-size: 1.15rem; max-width: 34em; margin-bottom: 34px; }
+.hero-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 22px 30px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--zap); color: #fff; text-decoration: none;
+  font-weight: 500; padding: 15px 28px; border-radius: 999px;
+  box-shadow: 0 10px 24px -10px rgba(31, 138, 76, .7);
+  transition: transform .2s, background .2s;
+}
+.btn:hover { background: #176c3b; transform: translateY(-2px); }
+.ico-zap { width: 24px; height: 24px; fill: currentColor; flex: none; }
+
+.link {
+  color: var(--lilas-escuro); font-weight: 500; text-decoration: none;
+  border-bottom: 1.5px solid var(--lilas); padding-bottom: 2px;
+}
+.link:hover { color: var(--oliva-escuro); border-color: var(--oliva); }
+
+.hero-logo img { width: 100%; max-width: 540px; margin-inline: auto; mix-blend-mode: multiply; }
+
+/* separador de pontos (motivo da logo) */
+.pontos { display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 28px 0 8px; }
+.pontos i { width: 11px; height: 11px; border-radius: 50%; background: var(--oliva); display: block; }
+.pontos i:nth-child(4), .pontos i:nth-child(5) { background: var(--lilas); width: 9px; height: 9px; }
+.pontos i:nth-child(1) { opacity: .5; }
+.pontos i:nth-child(2) { opacity: .7; }
+
+/* ---------- seções ---------- */
+.secao { max-width: 1080px; margin: 0 auto; padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 64px); }
+.titulo {
+  font-family: var(--serif); font-weight: 500; color: var(--oliva);
+  font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.12;
+  text-align: center; max-width: 18em; margin: 0 auto clamp(40px, 6vw, 72px);
+  text-wrap: balance;
+}
+.titulo.esq { text-align: left; margin-left: 0; }
+
+/* terapias */
+.terapia {
+  display: grid; grid-template-columns: 340px 1fr; align-items: center;
+  gap: clamp(28px, 6vw, 80px);
+  margin-bottom: clamp(48px, 7vw, 88px);
+}
+.terapia.invertida { grid-template-columns: 1fr 340px; }
+.terapia.invertida .terapia-arte { order: 2; }
+.terapia-arte {
+  background: var(--fundo-lilas);
+  border-radius: 48% 52% 46% 54% / 56% 44% 56% 44%;
+  aspect-ratio: 1; display: grid; place-items: center; padding: 14%;
+}
+.terapia-arte svg { width: 100%; height: 100%; overflow: visible; }
+.orelha { fill: none; stroke: var(--oliva); stroke-width: 2.5; stroke-linecap: round; }
+.ponto { fill: var(--lilas); }
+.ponto.verde { fill: var(--oliva); }
+.folha { fill: var(--oliva); opacity: .85; }
+.folha.lilas { fill: var(--lilas); opacity: .9; }
+
+.terapia h3 {
+  font-family: var(--serif); font-weight: 500; color: var(--oliva);
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem); line-height: 1.1; margin-bottom: 14px;
+}
+.terapia p { max-width: 34em; }
+.lista { list-style: none; margin: 22px 0 28px; }
+.lista li { position: relative; padding-left: 26px; margin-bottom: 6px; }
+.lista li::before {
+  content: ""; position: absolute; left: 2px; top: .62em;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--lilas);
+}
+
+/* benefícios */
+.faixa { max-width: none; background: var(--fundo-lilas); }
+.faixa .titulo { margin-bottom: 48px; }
+.beneficios {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.beneficios > div { padding: 6px 28px; border-left: 1.5px solid rgba(125, 90, 140, .3); }
+.beneficios > div:first-child { border-left: 0; }
+.beneficios h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; color: var(--lilas-escuro); margin-bottom: 6px; line-height: 1.2; }
+.beneficios p { font-size: 1rem; line-height: 1.6; }
+
+/* atendimento */
+.atend { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.passos { list-style: none; counter-reset: p; }
+.passos li {
+  counter-increment: p; position: relative; padding: 0 0 26px 62px;
+}
+.passos li::before {
+  content: counter(p); position: absolute; left: 0; top: -2px;
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1.5px solid var(--lilas); color: var(--lilas-escuro);
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 600;
+  display: grid; place-items: center;
+}
+.passos li:not(:last-child)::after {
+  content: ""; position: absolute; left: 20.5px; top: 46px; bottom: 6px; width: 1.5px; background: rgba(180, 139, 196, .5);
+}
+.passos strong { font-weight: 500; color: var(--oliva-escuro); }
+.aviso { margin-top: 10px; font-size: .92rem; color: #667058; font-style: italic; }
+
+.contato {
+  text-align: center; background: #fff;
+  border: 1.5px solid rgba(93, 122, 58, .25);
+  border-radius: 200px 200px 28px 28px;
+  padding: 44px 32px 44px;
+}
+.contato-flor { width: 110px; height: 110px; object-fit: cover; object-position: 20% 65%; margin: 0 auto 8px; border-radius: 50%; }
+.contato h3 { font-family: var(--serif); font-size: 2.2rem; font-weight: 500; color: var(--oliva); line-height: 1.1; margin-bottom: 8px; }
+.contato p { margin-bottom: 24px; }
+.zap-num {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--zap); color: #fff; text-decoration: none;
+  font-weight: 500; font-size: 1.25rem; letter-spacing: .02em;
+  padding: 14px 30px; border-radius: 999px; transition: background .2s, transform .2s;
+}
+.zap-num:hover { background: #176c3b; transform: translateY(-2px); }
+
+/* rodapé */
+.rodape { text-align: center; padding: 56px 20px 100px; background: var(--oliva-escuro); color: #e8efe0; }
+.rodape-marca { font-family: var(--serif); font-size: 2.6rem; color: #fff; line-height: 1; margin-bottom: 4px; }
+.rodape .peq { margin-top: 18px; font-size: .85rem; opacity: .7; }
+
+/* whatsapp flutuante */
+.zap-flutuante {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--zap); color: #fff;
+  display: grid; place-items: center;
+  box-shadow: 0 10px 26px -6px rgba(0, 0, 0, .4);
+  transition: transform .2s;
+}
+.zap-flutuante:hover { transform: scale(1.08); }
+.zap-flutuante svg { width: 34px; height: 34px; fill: currentColor; }
+
+/* ---------- celular e tablet ---------- */
+@media (max-width: 900px) {
+  .beneficios { grid-template-columns: 1fr 1fr; row-gap: 30px; }
+  .beneficios > div:nth-child(3) { border-left: 0; }
+  .atend { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .menu-btn { display: block; }
+  .menu {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--fundo); padding: 8px 20px 20px;
+    border-bottom: 1px solid rgba(93, 122, 58, .2);
+    display: none;
+  }
+  .menu.aberto { display: flex; }
+  .menu a { padding: 14px 4px; border-bottom: 1px solid rgba(93, 122, 58, .12); }
+  .menu-zap { text-align: center; margin-top: 14px; border: 0 !important; }
+
+  .hero { grid-template-columns: 1fr; text-align: left; }
+  .hero-logo { order: -1; }
+  .hero-logo img { max-width: 360px; }
+
+  .terapia, .terapia.invertida { grid-template-columns: 1fr; }
+  .terapia.invertida .terapia-arte { order: 0; }
+  .terapia-arte { max-width: 260px; margin: 0 auto; }
+}
+
+@media (max-width: 480px) {
+  .beneficios { grid-template-columns: 1fr; }
+  .beneficios > div { border-left: 0 !important; border-top: 1.5px solid rgba(125, 90, 140, .25); padding: 20px 4px 0; }
+  .beneficios > div:first-child { border-top: 0; padding-top: 0; }
+  .btn { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
